@@ -1,0 +1,90 @@
+# Filename: voice-detector.kv
+
+BoxLayout:
+    orientation: 'vertical'
+    spacing: 10
+    padding: 10
+
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'assets/background_image2.jpg' 
+
+    Label:
+        text: 'Human Voice and Siren Detector'
+        font_size: 24
+        size_hint_y: None
+        height: 5  # Adjust this value to increase/decrease space
+        bold: True
+        color: 1, 1, 1, 1  # White text color
+
+    BoxLayout:
+        orientation: 'horizontal'
+        spacing: 20
+
+        Button:
+            text: 'Start'
+            size_hint_y: None
+            height: 40
+            font_size: 18
+            background_color: 0.5, 0.9, 0.5, 0.8  # Slightly transparent green
+            on_press: app.start_detection()
+            Image:
+                source: 'assets/start.png'  # Replace with actual start icon
+
+        Button:
+            text: 'Stop'
+            size_hint_y: None
+            height: 40
+            font_size: 18
+            background_color: 0.9, 0.5, 0.5, 0.8  # Slightly transparent red
+            Image:
+                source: 'assets/stop.png'  # Replace with actual stop icon
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 10
+
+        Label:
+            text: 'Analysis Signals'
+            font_size: 18
+            size_hint_y: None
+            height: 40
+            color: 1, 1, 1, 1  # White text color
+
+        # Add your visualization area widget here
+        # Example: Image, Graph, etc.
+
+    TextInput:
+        id: additional_input
+        text: 'Enter text here'
+        font_size: 16
+        multiline: False
+        size_hint_y: None
+        height: 120
+        background_color: 0.7, 0.7, 0.7, 0.5  # Slightly transparent gray
+
+    BoxLayout:
+        orientation: 'horizontal'
+        spacing: 20
+
+        Button:
+            text: 'Clear'
+            size_hint_y: None
+            height: 60
+            font_size: 18
+            background_color: 0.9, 0.5, 0.5, 0.8  # Slightly transparent red
+            on_press: app.clear_input()
+            Image:
+                source: 'assets/trash.png'  # Replace with actual clear icon
+
+        Button:
+            text: 'Submit'
+            size_hint_y: None
+            height: 60
+            font_size: 18
+            background_color: 0.5, 0.9, 0.5, 0.8  # Slightly transparent green
+            on_press: app.submit_input()
+            Image:
+                source: 'assets/paper.png'  # Replace with actual submit icon
