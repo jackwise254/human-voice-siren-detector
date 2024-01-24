@@ -1,4 +1,4 @@
-# Filename: voice-detector.kv
+
 
 BoxLayout:
     orientation: 'vertical'
@@ -8,10 +8,10 @@ BoxLayout:
     canvas.before:
         Rectangle:
             pos: self.pos
-            size: self.size
-            source: 'assets/background_image2.jpg' 
+            size: self.size  # Set the size to match the size of the layout
+            source: 'assets/background_image2.jpg'
+            print(f"Layout Size: {self.size}, Image Size: {self.texture.size}")
 
-    Label:
         text: 'Human Voice and Siren Detector'
         font_size: 24
         size_hint_y: None
@@ -32,6 +32,9 @@ BoxLayout:
             on_press: app.start_detection()
             Image:
                 source: 'assets/start.png'  # Replace with actual start icon
+                size_hint: None, None
+                size: 40, 40
+                pos_hint: {'center_y': 0.5}  # Adjust position as needed
 
         Button:
             text: 'Stop'
@@ -39,8 +42,12 @@ BoxLayout:
             height: 40
             font_size: 18
             background_color: 0.9, 0.5, 0.5, 0.8  # Slightly transparent red
+            on_press: app.stop_detection()  # Add a method for stopping detection
             Image:
                 source: 'assets/stop.png'  # Replace with actual stop icon
+                size_hint: None, None
+                size: 40, 40
+                pos_hint: {'center_y': 0.5}  # Adjust position as needed
 
     BoxLayout:
         orientation: 'vertical'
@@ -76,8 +83,7 @@ BoxLayout:
             font_size: 18
             background_color: 0.9, 0.5, 0.5, 0.8  # Slightly transparent red
             on_press: app.clear_input()
-            Image:
-                source: 'assets/trash.png'  # Replace with actual clear icon
+            
 
         Button:
             text: 'Submit'
@@ -86,5 +92,4 @@ BoxLayout:
             font_size: 18
             background_color: 0.5, 0.9, 0.5, 0.8  # Slightly transparent green
             on_press: app.submit_input()
-            Image:
-                source: 'assets/paper.png'  # Replace with actual submit icon
+            
